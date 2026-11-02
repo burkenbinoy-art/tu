@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hi User! - Sunflower Smile Generator</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter & Nunito -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', 'Inter', sans-serif;
+        }
+        /* Custom sunflower themed scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #fef08a;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #eab308;
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ca8a04;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100 text-stone-800 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <!-- Main Container -->
+    <div class="w-full max-w-2xl bg-white/90 backdrop-blur-md border-4 border-amber-300 shadow-2xl rounded-3xl p-6 sm:p-10 flex flex-col items-center text-center transition-all duration-300 relative overflow-hidden">
+        
+        <!-- Sunflower Decorative Accent Background Elements -->
+        <div class="absolute -top-12 -left-12 w-32 h-32 bg-yellow-400 rounded-full blur-2xl opacity-40 pointer-events-none"></div>
+        <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-amber-500 rounded-full blur-2xl opacity-40 pointer-events-none"></div>
+
+        <!-- Header / Greeting Section -->
+        <div id="greetingSection" class="w-full mb-8 z-10">
+            <div class="text-4xl mb-2">🌻</div>
+            <h1 id="greetingText" class="text-3xl sm:text-5xl font-black tracking-tight text-amber-950 mb-3">
+                Hi Guyss!
+            </h1>
+            <p class="text-amber-800/80 text-sm sm:text-base font-semibold">Type your name below to personalize your greeting!</p>
+            
+            <!-- Name Input Field (Live updating without button) -->
+            <div class="mt-5 flex items-center justify-center max-w-md mx-auto">
+                <input 
+                    type="text" 
+                    id="nameInput" 
+                    oninput="updateGreeting()" 
+                    placeholder="Enter your name..." 
+                    class="w-full text-center px-4 py-3 bg-amber-50/80 border-2 border-amber-300 rounded-2xl text-amber-950 placeholder-amber-400 focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:border-amber-500 font-bold transition-all shadow-sm"
+                />
+            </div>
+        </div>
+
+        <!-- Action Button -->
+        <div class="w-full mb-8 z-10">
+            <button 
+                id="actionBtn"
+                onclick="generateTuuu()" 
+                class="w-full max-w-md py-4 px-8 bg-gradient-to-r from-yellow-400 via-amber-500 to-amber-600 hover:from-yellow-300 hover:to-amber-500 text-amber-950 text-2xl font-black rounded-2xl shadow-xl hover:shadow-yellow-500/40 border-2 border-yellow-200 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus:outline-none focus:ring-4 focus:ring-yellow-400">
+                Click Here 🌻
+            </button>
+        </div>
+
+        <!-- Output Display Section -->
+        <div id="outputCard" class="w-full hidden flex-col items-center bg-amber-50/90 border-2 border-amber-300 rounded-2xl p-4 sm:p-6 transition-all duration-300 z-10 shadow-inner">
+            <!-- Scrollable Output Container -->
+            <div 
+                id="tuuuOutput" 
+                class="w-full max-h-60 overflow-y-auto break-all font-bold text-left text-amber-950 bg-yellow-100/70 border-2 border-amber-200 p-4 rounded-xl text-lg sm:text-xl leading-relaxed custom-scrollbar shadow-inner selection:bg-amber-400 selection:text-amber-950">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- App Logic -->
+    <script>
+        let userName = "Friend";
+        let generatedString = "";
+
+        // Function to update the personalized greeting dynamically as the user types
+        function updateGreeting() {
+            const input = document.getElementById('nameInput');
+            const trimmedName = input.value.trim();
+            
+            if (trimmedName !== "") {
+                userName = trimmedName;
+                document.getElementById('greetingText').innerText = `Hi ${userName}!`;
+            } else {
+                userName = "Friend";
+                document.getElementById('greetingText').innerText = "Hi Friend!";
+            }
+        }
+
+        // Generate the target string: 't' + 1000 'u's
+        function generateTuuu() {
+            // "t" followed by "u" repeated 1000 times
+            generatedString = "t" + "u".repeat(1000);
+
+            const outputCard = document.getElementById('outputCard');
+            const tuuuOutput = document.getElementById('tuuuOutput');
+
+            // Set output text
+            tuuuOutput.innerText = generatedString;
+
+            // Show output card
+            outputCard.classList.remove('hidden');
+            outputCard.classList.add('flex');
+
+            // Scroll output box back to top
+            tuuuOutput.scrollTop = 0;
+        }
+    </script>
+</body>
+</html>
